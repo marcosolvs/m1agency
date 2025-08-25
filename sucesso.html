@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucesso! - M1YAGENC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="imagem/Layer 1.png" alt="M1YAGENC Logo" class="logo">
+        </header>
+
+       <main>
+    <div class="success-message">
+        <h1>Obrigado, <span id="client-name"></span>!</h1>
+        <p>Recebemos suas informações com sucesso. Em breve, um de nossos especialistas entrará em contato com você para conversarmos sobre como a M1YAGENC pode ajudar seu negócio a crescer!</p>
+    </div>
+</main>>
+
+        <footer>
+            <p class="copyright">© Copyright 2024 M1YAGENC</p>
+        </footer>
+    </div>
+   <script>
+const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxu7Lcu-1FxzJA-hEHlNXYE5GSjv6D_aa3CB5bcW7HbytGZdv8OrCc-zEj2f9jisdpx3wg/exec';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const qs = new URLSearchParams(window.location.search);
+
+  // Pega o valor do parâmetro nome
+  const clientName = qs.get('nome');
+  const clientNameSpan = document.getElementById('client-name');
+
+  if (clientName && clientNameSpan) {
+    const capitalizedName = clientName.charAt(0).toUpperCase() + clientName.slice(1);
+    clientNameSpan.textContent = capitalizedName;
+  } else if (clientNameSpan) {
+    clientNameSpan.textContent = 'visitante';
+  }
+
+  // Função auxiliar para pegar valores
+  const q = (n) => (document.querySelector(`[name="${n}"]`)?.value || '').trim() || (qs.get(n) || '');
+
+  // Monta o objeto com os dados
+  const payload = {
+    nome: q('nome'),
+    email: q('email'),
+    telefone: q('telefone') || q('whatsapp') || q('tel'),
+    faturamento: q('faturamento'),
+    setor: q('setor'),
+    empresa: q('empresa'),
+    mensagem: q('mensagem'),
+    origem: location.hostname || 'site'
+  };
+
+  // Validação mínima
+  if (!payload.nome || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+    console.warn('⚠️ Nome ou e-mail inválido, não enviado.');
+    return;
+  }
+
+  // Envia para o Google Sheets
+  fetch(WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(() => console.log("✅ Dados enviados com sucesso!"))
+  .catch(err => console.error("❌ Erro ao enviar:", err));
+});
+</script>
+<script src="final-submit.js"></script>
+</body>
+</html>

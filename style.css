@@ -1,0 +1,144 @@
+/* style.css */
+
+/* Reset básico e fontes */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 450px;
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 100px; /* Ajuste o tamanho da sua logo */
+}
+
+.back-arrow {
+    color: #333;
+}
+
+main {
+    width: 100%;
+}
+
+.intro-text {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.intro-text p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.intro-text h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background-color: #e51d27; /* Cor do botão V4 */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #c91a21; /* Cor um pouco mais escura no hover */
+}
+
+/* Estilização do depoimento */
+.testimonial-box {
+    background-color: #fcebeb;
+    border: 1px solid #f9dcdc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.testimonial-box .quote {
+    font-style: italic;
+    font-weight: 500;
+    color: #e51d27;
+    position: relative;
+    padding-left: 20px;
+}
+
+.testimonial-box .quote::before {
+    content: "“";
+    font-size: 3rem;
+    color: #e51d27;
+    position: absolute;
+    top: -15px;
+    left: 0;
+}
+
+.testimonial-box .author {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 1rem;
+}
+
+footer {
+    width: 100%;
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+footer a {
+    color: #e51d27;
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 0.5rem;
+}
